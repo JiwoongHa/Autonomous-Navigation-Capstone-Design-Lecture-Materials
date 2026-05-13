@@ -1,0 +1,362 @@
+[0.000000] (-) TimerEvent: {}
+[0.000369] (pointcloud_to_laserscan) JobQueued: {'identifier': 'pointcloud_to_laserscan', 'dependencies': OrderedDict()}
+[0.000389] (px4_msgs) JobQueued: {'identifier': 'px4_msgs', 'dependencies': OrderedDict()}
+[0.000400] (px4_ros_com) JobQueued: {'identifier': 'px4_ros_com', 'dependencies': OrderedDict()}
+[0.000410] (pointcloud_to_laserscan) JobStarted: {'identifier': 'pointcloud_to_laserscan'}
+[0.003775] (px4_msgs) JobStarted: {'identifier': 'px4_msgs'}
+[0.005498] (px4_ros_com) JobStarted: {'identifier': 'px4_ros_com'}
+[0.007876] (pointcloud_to_laserscan) JobProgress: {'identifier': 'pointcloud_to_laserscan', 'progress': 'cmake'}
+[0.008158] (pointcloud_to_laserscan) Command: {'cmd': ['/usr/bin/cmake', '/home/ansl/ca_ws/src/pointcloud_to_laserscan', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/ansl/ca_ws/install/pointcloud_to_laserscan'], 'cwd': '/home/ansl/ca_ws/build/pointcloud_to_laserscan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ansl'), ('SSH_CLIENT', '192.168.0.146 7578 22'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ansl'), ('OLDPWD', '/home/ansl/ca_ws/src'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ansl/ws_livox/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'ansl'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '10'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('PWD', '/home/ansl/ca_ws/build/pointcloud_to_laserscan'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.146 7578 192.168.0.147 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ansl/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble')]), 'shell': False}
+[0.009387] (px4_msgs) JobProgress: {'identifier': 'px4_msgs', 'progress': 'cmake'}
+[0.009652] (px4_msgs) Command: {'cmd': ['/usr/bin/cmake', '/home/ansl/ca_ws/src/px4_msgs', '-DAMENT_CMAKE_SYMLINK_INSTALL=1', '-DCMAKE_INSTALL_PREFIX=/home/ansl/ca_ws/install/px4_msgs'], 'cwd': '/home/ansl/ca_ws/build/px4_msgs', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ansl'), ('SSH_CLIENT', '192.168.0.146 7578 22'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ansl'), ('OLDPWD', '/home/ansl/ca_ws/src'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ansl/ws_livox/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'ansl'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '10'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('PWD', '/home/ansl/ca_ws/build/px4_msgs'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.146 7578 192.168.0.147 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ansl/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble')]), 'shell': False}
+[0.011229] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'cmake'}
+[0.011540] (px4_ros_com) Command: {'cmd': ['/usr/bin/cmake', '/home/ansl/ca_ws/src/px4_ros_com', '-DCMAKE_INSTALL_PREFIX=/home/ansl/ca_ws/install/px4_ros_com'], 'cwd': '/home/ansl/ca_ws/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ansl'), ('SSH_CLIENT', '192.168.0.146 7578 22'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ansl'), ('OLDPWD', '/home/ansl/ca_ws/src'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ansl/ws_livox/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'ansl'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '10'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('PWD', '/home/ansl/ca_ws/build/px4_ros_com'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.146 7578 192.168.0.147 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ansl/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2')]), 'shell': False}
+[0.017278] (px4_ros_com) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) in CMakeLists.txt:\n'}
+[0.017519] (px4_ros_com) StderrLine: {'line': b'  No project() command is present.  The top-level CMakeLists.txt file must\n'}
+[0.017635] (px4_ros_com) StderrLine: {'line': b'  contain a literal, direct call to the project() command.  Add a line of\n'}
+[0.017734] (px4_ros_com) StderrLine: {'line': b'  code such as\n'}
+[0.017804] (px4_ros_com) StderrLine: {'line': b'\n'}
+[0.017877] (px4_ros_com) StderrLine: {'line': b'    project(ProjectName)\n'}
+[0.017927] (px4_ros_com) StderrLine: {'line': b'\n'}
+[0.017981] (px4_ros_com) StderrLine: {'line': b'  near the top of the file, but after cmake_minimum_required().\n'}
+[0.018014] (px4_ros_com) StderrLine: {'line': b'\n'}
+[0.018065] (px4_ros_com) StderrLine: {'line': b'  CMake is pretending there is a "project(Project)" command on the first\n'}
+[0.018108] (px4_ros_com) StderrLine: {'line': b'  line.\n'}
+[0.018151] (px4_ros_com) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[0.018203] (px4_ros_com) StderrLine: {'line': b'\x1b[0m\n'}
+[0.042876] (px4_msgs) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.043188] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.052731] (px4_ros_com) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.079092] (px4_msgs) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.079867] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.083644] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.086143] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.099876] (-) TimerEvent: {}
+[0.101295] (px4_ros_com) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.108059] (px4_ros_com) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.126871] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.131983] (px4_msgs) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.132160] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.132354] (px4_msgs) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.133461] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.134354] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.138489] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.138619] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.138878] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.140847] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.155211] (px4_ros_com) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.160946] (px4_ros_com) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.161087] (px4_ros_com) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.161375] (px4_ros_com) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.163790] (px4_ros_com) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.187908] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.194465] (px4_msgs) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.194810] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.195240] (px4_msgs) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.195531] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.197007] (px4_msgs) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.199938] (-) TimerEvent: {}
+[0.200825] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.201016] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.201320] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.202354] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found ament_cmake_auto: 1.3.14 (/opt/ros/humble/share/ament_cmake_auto/cmake)\n'}
+[0.215149] (px4_ros_com) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.221160] (px4_ros_com) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.221355] (px4_ros_com) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.221758] (px4_ros_com) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.222206] (px4_ros_com) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.222757] (px4_ros_com) StdoutLine: {'line': b'-- Generating done\n'}
+[0.223240] (px4_ros_com) StdoutLine: {'line': b'-- Build files have been written to: /home/ansl/ca_ws/build/px4_ros_com\n'}
+[0.225282] (px4_ros_com) CommandEnded: {'returncode': 0}
+[0.225584] (px4_ros_com) JobProgress: {'identifier': 'px4_ros_com', 'progress': 'build'}
+[0.225993] (px4_ros_com) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ansl/ca_ws/build/px4_ros_com', '--', '-j8', '-l8'], 'cwd': '/home/ansl/ca_ws/build/px4_ros_com', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ansl'), ('SSH_CLIENT', '192.168.0.146 7578 22'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ansl'), ('OLDPWD', '/home/ansl/ca_ws/src'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ansl/ws_livox/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'ansl'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '10'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('PWD', '/home/ansl/ca_ws/build/px4_ros_com'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.146 7578 192.168.0.147 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ansl/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2')]), 'shell': False}
+[0.250238] (px4_ros_com) CommandEnded: {'returncode': 0}
+[0.255540] (px4_ros_com) JobEnded: {'identifier': 'px4_ros_com', 'rc': 0}
+[0.297714] (px4_msgs) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.300043] (-) TimerEvent: {}
+[0.322383] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter \n'}
+[0.339526] (px4_msgs) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.352557] (px4_msgs) StdoutLine: {'line': b'-- Found builtin_interfaces: 1.2.2 (/opt/ros/humble/share/builtin_interfaces/cmake)\n'}
+[0.370804] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.373404] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.374008] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Override CMake install command with custom implementation using symlinks instead of copying resources\n'}
+[0.378630] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.385942] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.396249] (px4_msgs) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.400118] (-) TimerEvent: {}
+[0.410235] (px4_msgs) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.462056] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found rosidl_generator_c: 3.1.8 (/opt/ros/humble/share/rosidl_generator_c/cmake)\n'}
+[0.464878] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.470051] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found rosidl_generator_cpp: 3.1.8 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)\n'}
+[0.477438] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.487338] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.500212] (-) TimerEvent: {}
+[0.514004] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)\n'}
+[0.515555] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)\n'}
+[0.567670] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  \n'}
+[0.584579] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found FastRTPS: /opt/ros/humble/include  \n'}
+[0.600302] (-) TimerEvent: {}
+[0.610221] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Using RMW implementation 'rmw_fastrtps_cpp' as default\n"}
+[0.614752] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Looking for pthread.h\n'}
+[0.661245] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Looking for pthread.h - found\n'}
+[0.661429] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD\n'}
+[0.700415] (-) TimerEvent: {}
+[0.710521] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success\n'}
+[0.711708] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found Threads: TRUE  \n'}
+[0.800506] (-) TimerEvent: {}
+[0.844307] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[0.850389] (pointcloud_to_laserscan) StderrLine: {'line': b'\x1b[0mIn this package, headers install destination is set to `include` by ament_auto_package. It is recommended to install `include/pointcloud_to_laserscan` instead and will be the default behavior of ament_auto_package from ROS 2 Kilted Kaiju. On distributions before Kilted, ament_auto_package behaves the same way when you use USE_SCOPED_HEADER_INSTALL_DIR option.\x1b[0m\n'}
+[0.854851] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'cppcheck' to perform static code analysis on C / C++ code\n"}
+[0.855174] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Configured cppcheck include dirs: /home/ansl/ca_ws/src/pointcloud_to_laserscan/include\n'}
+[0.855238] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Configured cppcheck exclude dirs and/or files: \n'}
+[0.856667] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'cpplint' to check C / C++ code against the Google style\n"}
+[0.856795] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Configured cpplint exclude dirs and/or files: \n'}
+[0.857015] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'flake8' to check Python code syntax and style conventions\n"}
+[0.857609] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'lint_cmake' to check CMake code style\n"}
+[0.858006] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257\n"}
+[0.859535] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'uncrustify' to check C / C++ code style\n"}
+[0.859606] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Configured uncrustify additional arguments: \n'}
+[0.860015] (pointcloud_to_laserscan) StdoutLine: {'line': b"-- Added test 'xmllint' to check XML markup files\n"}
+[0.861676] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Configuring done\n'}
+[0.882056] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Generating done\n'}
+[0.888518] (pointcloud_to_laserscan) StdoutLine: {'line': b'-- Build files have been written to: /home/ansl/ca_ws/build/pointcloud_to_laserscan\n'}
+[0.895330] (pointcloud_to_laserscan) CommandEnded: {'returncode': 0}
+[0.896326] (pointcloud_to_laserscan) JobProgress: {'identifier': 'pointcloud_to_laserscan', 'progress': 'build'}
+[0.896406] (pointcloud_to_laserscan) Command: {'cmd': ['/usr/bin/cmake', '--build', '/home/ansl/ca_ws/build/pointcloud_to_laserscan', '--', '-j8', '-l8'], 'cwd': '/home/ansl/ca_ws/build/pointcloud_to_laserscan', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('USER', 'ansl'), ('SSH_CLIENT', '192.168.0.146 7578 22'), ('LC_TIME', 'ko_KR.UTF-8'), ('XDG_SESSION_TYPE', 'tty'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/usr/local/lib'), ('MOTD_SHOWN', 'pam'), ('HOME', '/home/ansl'), ('OLDPWD', '/home/ansl/ca_ws/src'), ('SSH_TTY', '/dev/pts/0'), ('ROS_PYTHON_VERSION', '3'), ('LC_MONETARY', 'ko_KR.UTF-8'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1000/bus'), ('COLCON_PREFIX_PATH', '/home/ansl/ws_livox/install'), ('ROS_DISTRO', 'humble'), ('LOGNAME', 'ansl'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('TERM', 'xterm-256color'), ('XDG_SESSION_ID', '10'), ('ROS_LOCALHOST_ONLY', '0'), ('PATH', '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin'), ('LC_ADDRESS', 'ko_KR.UTF-8'), ('XDG_RUNTIME_DIR', '/run/user/1000'), ('LANG', 'en_US.UTF-8'), ('LC_TELEPHONE', 'ko_KR.UTF-8'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('AMENT_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble'), ('SHELL', '/bin/bash'), ('LC_NAME', 'ko_KR.UTF-8'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('LC_MEASUREMENT', 'ko_KR.UTF-8'), ('LC_IDENTIFICATION', 'ko_KR.UTF-8'), ('PWD', '/home/ansl/ca_ws/build/pointcloud_to_laserscan'), ('LC_ALL', 'en_US.UTF-8'), ('SSH_CONNECTION', '192.168.0.146 7578 192.168.0.147 22'), ('XDG_DATA_DIRS', '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/ansl/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('LC_NUMERIC', 'ko_KR.UTF-8'), ('LC_PAPER', 'ko_KR.UTF-8'), ('COLCON', '1'), ('CMAKE_PREFIX_PATH', '/home/ansl/ws_livox/install/livox_ros_driver2:/opt/ros/humble')]), 'shell': False}
+[0.900582] (-) TimerEvent: {}
+[0.928371] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/laserscan_to_pointcloud.dir/src/laserscan_to_pointcloud_node.cpp.o\x1b[0m\n'}
+[0.928543] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/laserscan_to_pointcloud_node.dir/rclcpp_components/node_main_laserscan_to_pointcloud_node.cpp.o\x1b[0m\n'}
+[0.928608] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 30%] \x1b[32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan_node.dir/rclcpp_components/node_main_pointcloud_to_laserscan_node.cpp.o\x1b[0m\n'}
+[1.000690] (-) TimerEvent: {}
+[1.100956] (-) TimerEvent: {}
+[1.201224] (-) TimerEvent: {}
+[1.301505] (-) TimerEvent: {}
+[1.401801] (-) TimerEvent: {}
+[1.473224] (px4_msgs) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):\n'}
+[1.473430] (px4_msgs) StderrLine: {'line': b'  execute_process(/usr/bin/python3 -m rosidl_adapter --package-name px4_msgs\n'}
+[1.473508] (px4_msgs) StderrLine: {'line': b'  --arguments-file\n'}
+[1.473573] (px4_msgs) StderrLine: {'line': b'  /home/ansl/ca_ws/build/px4_msgs/rosidl_adapter__arguments__px4_msgs.json\n'}
+[1.473638] (px4_msgs) StderrLine: {'line': b'  --output-dir /home/ansl/ca_ws/build/px4_msgs/rosidl_adapter/px4_msgs\n'}
+[1.473730] (px4_msgs) StderrLine: {'line': b'  --output-file /home/ansl/ca_ws/build/px4_msgs/rosidl_adapter/px4_msgs.idls)\n'}
+[1.473802] (px4_msgs) StderrLine: {'line': b'  returned error code 1:\n'}
+[1.473864] (px4_msgs) StderrLine: {'line': b'\n'}
+[1.473920] (px4_msgs) StderrLine: {'line': b'  Traceback (most recent call last):\n'}
+[1.473975] (px4_msgs) StderrLine: {'line': b'\n'}
+[1.474029] (px4_msgs) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main\n'}
+[1.474088] (px4_msgs) StderrLine: {'line': b'      return _run_code(code, main_globals, None,\n'}
+[1.474144] (px4_msgs) StderrLine: {'line': b'    File "/usr/lib/python3.10/runpy.py", line 86, in _run_code\n'}
+[1.474201] (px4_msgs) StderrLine: {'line': b'      exec(code, run_globals)\n'}
+[1.474259] (px4_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>\n'}
+[1.474312] (px4_msgs) StderrLine: {'line': b'      sys.exit(main())\n'}
+[1.474368] (px4_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main\n'}
+[1.474424] (px4_msgs) StderrLine: {'line': b'      abs_idl_file = convert_to_idl(\n'}
+[1.474482] (px4_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 24, in convert_to_idl\n'}
+[1.474540] (px4_msgs) StderrLine: {'line': b'      return convert_srv_to_idl(\n'}
+[1.474598] (px4_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/srv/__init__.py", line 28, in convert_srv_to_idl\n'}
+[1.474662] (px4_msgs) StderrLine: {'line': b'      srv = parse_service_string(package_name, input_file.stem, content)\n'}
+[1.474726] (px4_msgs) StderrLine: {'line': b'    File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 850, in parse_service_string\n'}
+[1.474785] (px4_msgs) StderrLine: {'line': b'      raise InvalidServiceSpecification(\n'}
+[1.474842] (px4_msgs) StderrLine: {'line': b'\n'}
+[1.474896] (px4_msgs) StderrLine: {'line': b'  rosidl_adapter.parser.InvalidServiceSpecification: Could not find separator\n'}
+[1.474954] (px4_msgs) StderrLine: {'line': b"  '---' between request and response\n"}
+[1.475013] (px4_msgs) StderrLine: {'line': b'\n'}
+[1.475073] (px4_msgs) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.475132] (px4_msgs) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)\n'}
+[1.475191] (px4_msgs) StderrLine: {'line': b'  CMakeLists.txt:28 (rosidl_generate_interfaces)\n'}
+[1.475250] (px4_msgs) StderrLine: {'line': b'\n'}
+[1.475306] (px4_msgs) StderrLine: {'line': b'\x1b[0m\n'}
+[1.475364] (px4_msgs) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.475433] (px4_msgs) StdoutLine: {'line': b'See also "/home/ansl/ca_ws/build/px4_msgs/CMakeFiles/CMakeOutput.log".\n'}
+[1.482146] (px4_msgs) CommandEnded: {'returncode': 1}
+[1.496331] (px4_msgs) JobEnded: {'identifier': 'px4_msgs', 'rc': 1}
+[1.501914] (-) TimerEvent: {}
+[1.602216] (-) TimerEvent: {}
+[1.702525] (-) TimerEvent: {}
+[1.802853] (-) TimerEvent: {}
+[1.903193] (-) TimerEvent: {}
+[2.003494] (-) TimerEvent: {}
+[2.103815] (-) TimerEvent: {}
+[2.204137] (-) TimerEvent: {}
+[2.304454] (-) TimerEvent: {}
+[2.404811] (-) TimerEvent: {}
+[2.505138] (-) TimerEvent: {}
+[2.605450] (-) TimerEvent: {}
+[2.705767] (-) TimerEvent: {}
+[2.806071] (-) TimerEvent: {}
+[2.906378] (-) TimerEvent: {}
+[3.006679] (-) TimerEvent: {}
+[3.076190] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 40%] \x1b[32m\x1b[1mLinking CXX executable laserscan_to_pointcloud_node\x1b[0m\n'}
+[3.079276] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] \x1b[32m\x1b[1mLinking CXX executable pointcloud_to_laserscan_node\x1b[0m\n'}
+[3.106784] (-) TimerEvent: {}
+[3.175722] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] Built target laserscan_to_pointcloud_node\n'}
+[3.175912] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 50%] Built target pointcloud_to_laserscan_node\n'}
+[3.206890] (-) TimerEvent: {}
+[3.307179] (-) TimerEvent: {}
+[3.407481] (-) TimerEvent: {}
+[3.507776] (-) TimerEvent: {}
+[3.608071] (-) TimerEvent: {}
+[3.708376] (-) TimerEvent: {}
+[3.808673] (-) TimerEvent: {}
+[3.908961] (-) TimerEvent: {}
+[4.009258] (-) TimerEvent: {}
+[4.109548] (-) TimerEvent: {}
+[4.209855] (-) TimerEvent: {}
+[4.310148] (-) TimerEvent: {}
+[4.410436] (-) TimerEvent: {}
+[4.510726] (-) TimerEvent: {}
+[4.611016] (-) TimerEvent: {}
+[4.711321] (-) TimerEvent: {}
+[4.811611] (-) TimerEvent: {}
+[4.911918] (-) TimerEvent: {}
+[5.012208] (-) TimerEvent: {}
+[5.112498] (-) TimerEvent: {}
+[5.212820] (-) TimerEvent: {}
+[5.313119] (-) TimerEvent: {}
+[5.413411] (-) TimerEvent: {}
+[5.513704] (-) TimerEvent: {}
+[5.613999] (-) TimerEvent: {}
+[5.714302] (-) TimerEvent: {}
+[5.814654] (-) TimerEvent: {}
+[5.914943] (-) TimerEvent: {}
+[6.015215] (-) TimerEvent: {}
+[6.115495] (-) TimerEvent: {}
+[6.215786] (-) TimerEvent: {}
+[6.316061] (-) TimerEvent: {}
+[6.416338] (-) TimerEvent: {}
+[6.516614] (-) TimerEvent: {}
+[6.616907] (-) TimerEvent: {}
+[6.717182] (-) TimerEvent: {}
+[6.817453] (-) TimerEvent: {}
+[6.917724] (-) TimerEvent: {}
+[7.018009] (-) TimerEvent: {}
+[7.118282] (-) TimerEvent: {}
+[7.218558] (-) TimerEvent: {}
+[7.318843] (-) TimerEvent: {}
+[7.419110] (-) TimerEvent: {}
+[7.519383] (-) TimerEvent: {}
+[7.619667] (-) TimerEvent: {}
+[7.719944] (-) TimerEvent: {}
+[7.820215] (-) TimerEvent: {}
+[7.920484] (-) TimerEvent: {}
+[8.020719] (-) TimerEvent: {}
+[8.121031] (-) TimerEvent: {}
+[8.221376] (-) TimerEvent: {}
+[8.321739] (-) TimerEvent: {}
+[8.396781] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 60%] \x1b[32m\x1b[1mLinking CXX shared library liblaserscan_to_pointcloud.so\x1b[0m\n'}
+[8.421857] (-) TimerEvent: {}
+[8.522140] (-) TimerEvent: {}
+[8.622448] (-) TimerEvent: {}
+[8.722761] (-) TimerEvent: {}
+[8.750022] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 60%] Built target laserscan_to_pointcloud\n'}
+[8.763181] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 70%] \x1b[32mBuilding CXX object CMakeFiles/pointcloud_to_laserscan.dir/src/pointcloud_to_laserscan_node.cpp.o\x1b[0m\n'}
+[8.822849] (-) TimerEvent: {}
+[8.923155] (-) TimerEvent: {}
+[9.023464] (-) TimerEvent: {}
+[9.123783] (-) TimerEvent: {}
+[9.224117] (-) TimerEvent: {}
+[9.324434] (-) TimerEvent: {}
+[9.424759] (-) TimerEvent: {}
+[9.525048] (-) TimerEvent: {}
+[9.625363] (-) TimerEvent: {}
+[9.725700] (-) TimerEvent: {}
+[9.826022] (-) TimerEvent: {}
+[9.926340] (-) TimerEvent: {}
+[10.026669] (-) TimerEvent: {}
+[10.126972] (-) TimerEvent: {}
+[10.227300] (-) TimerEvent: {}
+[10.327617] (-) TimerEvent: {}
+[10.427859] (-) TimerEvent: {}
+[10.528203] (-) TimerEvent: {}
+[10.628540] (-) TimerEvent: {}
+[10.728799] (-) TimerEvent: {}
+[10.829090] (-) TimerEvent: {}
+[10.929343] (-) TimerEvent: {}
+[11.029711] (-) TimerEvent: {}
+[11.129993] (-) TimerEvent: {}
+[11.230317] (-) TimerEvent: {}
+[11.330650] (-) TimerEvent: {}
+[11.430882] (-) TimerEvent: {}
+[11.531207] (-) TimerEvent: {}
+[11.631530] (-) TimerEvent: {}
+[11.731863] (-) TimerEvent: {}
+[11.832187] (-) TimerEvent: {}
+[11.932427] (-) TimerEvent: {}
+[12.032750] (-) TimerEvent: {}
+[12.133029] (-) TimerEvent: {}
+[12.233352] (-) TimerEvent: {}
+[12.333673] (-) TimerEvent: {}
+[12.433906] (-) TimerEvent: {}
+[12.534258] (-) TimerEvent: {}
+[12.634523] (-) TimerEvent: {}
+[12.734798] (-) TimerEvent: {}
+[12.835067] (-) TimerEvent: {}
+[12.935332] (-) TimerEvent: {}
+[13.035663] (-) TimerEvent: {}
+[13.135905] (-) TimerEvent: {}
+[13.236174] (-) TimerEvent: {}
+[13.336515] (-) TimerEvent: {}
+[13.436793] (-) TimerEvent: {}
+[13.537094] (-) TimerEvent: {}
+[13.637333] (-) TimerEvent: {}
+[13.737572] (-) TimerEvent: {}
+[13.837799] (-) TimerEvent: {}
+[13.938038] (-) TimerEvent: {}
+[14.038297] (-) TimerEvent: {}
+[14.138551] (-) TimerEvent: {}
+[14.238792] (-) TimerEvent: {}
+[14.339076] (-) TimerEvent: {}
+[14.439385] (-) TimerEvent: {}
+[14.539639] (-) TimerEvent: {}
+[14.639876] (-) TimerEvent: {}
+[14.740180] (-) TimerEvent: {}
+[14.840489] (-) TimerEvent: {}
+[14.940728] (-) TimerEvent: {}
+[15.041001] (-) TimerEvent: {}
+[15.141331] (-) TimerEvent: {}
+[15.241659] (-) TimerEvent: {}
+[15.341961] (-) TimerEvent: {}
+[15.442194] (-) TimerEvent: {}
+[15.542450] (-) TimerEvent: {}
+[15.642693] (-) TimerEvent: {}
+[15.742972] (-) TimerEvent: {}
+[15.843254] (-) TimerEvent: {}
+[15.943541] (-) TimerEvent: {}
+[15.981524] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 80%] \x1b[32m\x1b[1mLinking CXX shared library libpointcloud_to_laserscan.so\x1b[0m\n'}
+[16.043656] (-) TimerEvent: {}
+[16.143967] (-) TimerEvent: {}
+[16.244249] (-) TimerEvent: {}
+[16.344527] (-) TimerEvent: {}
+[16.355629] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 80%] Built target pointcloud_to_laserscan\n'}
+[16.369902] (pointcloud_to_laserscan) StdoutLine: {'line': b'[ 90%] \x1b[32mBuilding CXX object CMakeFiles/dummy_pointcloud_publisher.dir/src/dummy_pointcloud_publisher.cpp.o\x1b[0m\n'}
+[16.444703] (-) TimerEvent: {}
+[16.545023] (-) TimerEvent: {}
+[16.645285] (-) TimerEvent: {}
+[16.745615] (-) TimerEvent: {}
+[16.845958] (-) TimerEvent: {}
+[16.946280] (-) TimerEvent: {}
+[17.046548] (-) TimerEvent: {}
+[17.146783] (-) TimerEvent: {}
+[17.247066] (-) TimerEvent: {}
+[17.347392] (-) TimerEvent: {}
+[17.447660] (-) TimerEvent: {}
+[17.547898] (-) TimerEvent: {}
+[17.648247] (-) TimerEvent: {}
+[17.748511] (-) TimerEvent: {}
+[17.848851] (-) TimerEvent: {}
+[17.949188] (-) TimerEvent: {}
+[18.049502] (-) TimerEvent: {}
+[18.149792] (-) TimerEvent: {}
+[18.250063] (-) TimerEvent: {}
+[18.350401] (-) TimerEvent: {}
+[18.450732] (-) TimerEvent: {}
+[18.551013] (-) TimerEvent: {}
+[18.651272] (-) TimerEvent: {}
+[18.751610] (-) TimerEvent: {}
+[18.851922] (-) TimerEvent: {}
+[18.952171] (-) TimerEvent: {}
+[18.994570] (pointcloud_to_laserscan) StdoutLine: {'line': b'[100%] \x1b[32m\x1b[1mLinking CXX executable dummy_pointcloud_publisher\x1b[0m\n'}
+[19.052276] (-) TimerEvent: {}
+[19.149783] (pointcloud_to_laserscan) StdoutLine: {'line': b'[100%] Built target dummy_pointcloud_publisher\n'}
+[19.152351] (-) TimerEvent: {}
+[19.156688] (pointcloud_to_laserscan) JobEnded: {'identifier': 'pointcloud_to_laserscan', 'rc': 'SIGINT'}
+[19.166999] (-) EventReactorShutdown: {}

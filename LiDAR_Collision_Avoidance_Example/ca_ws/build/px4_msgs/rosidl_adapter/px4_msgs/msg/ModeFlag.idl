@@ -1,0 +1,32 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from px4_msgs/msg/ModeFlag.msg
+// generated code does not contain a copyright notice
+
+
+module px4_msgs {
+  module msg {
+    struct ModeFlag {
+      uint64 timestamp;
+
+      float modeone;
+
+      float modetwo;
+
+      float modethree;
+
+      float modefour;
+
+      float modefive;
+
+      float modesix;
+
+      float modeseven;
+
+      float modeeight;
+
+      float modenine;
+
+      float modeten;
+    };
+  };
+};

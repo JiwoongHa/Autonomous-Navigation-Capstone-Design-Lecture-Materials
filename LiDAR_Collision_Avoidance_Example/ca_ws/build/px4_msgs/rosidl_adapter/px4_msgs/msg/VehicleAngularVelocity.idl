@@ -1,0 +1,12 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from px4_msgs/msg/VehicleAngularVelocity.msg
+// generated code does not contain a copyright notice
+
+
+module px4_msgs {
+  module msg {
+    struct VehicleAngularVelocity {
+      uint8 structure_needs_at_least_one_member;
+    };
+  };
+};
