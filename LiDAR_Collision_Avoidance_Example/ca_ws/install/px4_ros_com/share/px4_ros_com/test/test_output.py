@@ -1,1 +1,0 @@
-/home/ansl/ca_ws/src/px4_ros_com/test/test_output.py

@@ -1,3 +1,0 @@
-[console_scripts]
-obstacle_avoidance_node = ugv_collision_avoidance_lidar_example2.obstacle_avoidance_node:main
-

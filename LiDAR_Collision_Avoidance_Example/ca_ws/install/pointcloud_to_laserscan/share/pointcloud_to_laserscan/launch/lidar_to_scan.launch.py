@@ -1,1 +1,0 @@
-/home/ansl/ca_ws/src/pointcloud_to_laserscan/launch/lidar_to_scan.launch.py

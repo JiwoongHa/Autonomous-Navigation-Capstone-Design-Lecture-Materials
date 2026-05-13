@@ -1,1 +1,0 @@
-/home/ansl/ca_ws/build/ugv_collision_avoidance_lidar_example2/launch/ugv_avoidance.launch.py

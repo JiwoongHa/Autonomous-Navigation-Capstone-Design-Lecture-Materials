@@ -1,3 +1,0 @@
-[console_scripts]
-actuator_command_publisher = ugv_collision_avoidance_lidar_example1.actuator_command_publisher:main
-
