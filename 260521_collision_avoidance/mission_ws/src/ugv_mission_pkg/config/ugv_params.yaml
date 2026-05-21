@@ -1,0 +1,51 @@
+transformer_coordinate_node:
+  ros__parameters:
+    origin:
+      latitude:  36.364864    # 실제 운용 좌표 입력
+      longitude: 127.344258
+      altitude:  0.0
+
+collision_avoidance_node:
+  ros__parameters:
+
+    sys:
+      node_period_sec: 0.05       # 제어 루프 실행 주기 (초) | 0.05 = 20Hz | 낮출수록 반응 빠르나 CPU 부하 증가
+
+    robot:
+      max_speed_m_s:       2.0    # 최대 전진 속도 (m/s) | 높일수록 빠르지만 장애물 반응 시간 짧아짐
+      min_speed_m_s:       0.3    # 목표 근처 감속 시 최소 속도 (m/s) | 너무 낮으면 기어감, 너무 높으면 목표 지나침
+      max_yaw_rate_deg_s:  75.0   # 최대 회전 속도 (deg/s) | arc 좌우 꺾임 한계 | 높이면 급회전 가능
+      safety_radius_m:     0.20   # 충돌 판정 반경 (m) | 로봇 반폭 + 여유 | 크면 안전하지만 좁은 통로 통과 어려움
+                                  # ※ 반드시 lidar.ignore_radius_m 보다 작아야 함
+      max_accel_m_s2:      1.0    # 가속도 제한 (m/s²) | 높이면 빠르게 목표 속도 도달, 낮으면 부드럽게 가속
+
+    plan:
+      sim_time_sec:                3.0   # arc 궤적 미리보기 시간 (초) | 길수록 먼 장애물 대비, 짧을수록 좁은 공간 통과 유리
+      dt_sec:                      0.2   # arc 시뮬레이션 타임스텝 (초) | 작을수록 궤적 정밀, 스텝 수 = sim_time / dt
+      arc_count:                   20    # arc 후보 개수 | 좌우 최대 회전각을 이 수만큼 등분 | 많을수록 세밀한 방향 탐색
+      goal_stop_dist_m:            0.5   # 목표 도달 판정 반경 (m) | 이 거리 이내 진입 시 정지 | GPS 오차 고려해 설정
+      goal_slowdown_dist_m:        5.0   # 감속 시작 거리 (m) | 이 거리부터 목표까지 최대속도 → 최소속도 선형 감속
+      obstacle_free_dist_m:        3.0   # FREE/AVOIDANCE 모드 전환 임계 거리 (m)
+                                         # 장애물이 이 거리보다 가까우면 → AVOIDANCE (arc 플래너)
+                                         # 장애물이 이 거리보다 멀면    → FREE (목표 방향 직접 유도)
+      obstacle_free_hysteresis_m:  0.5   # 모드 전환 히스테리시스 (m) | AVOIDANCE → FREE 복귀 조건 = obstacle_free_dist + 이 값
+                                         # 값이 클수록 모드가 안정적, 작을수록 민감하게 전환
+
+    recovery:
+      front_obstacle_threshold_m:  0.6   # 전방 장애물 위험 임계 거리 (m) | 이 거리보다 가까우면 HOLDING 진입
+                                         # ※ clear_distance_m 보다 작거나 같아야 함
+      clear_distance_m:            0.6   # 전방 장애물 해소 판정 거리 (m) | 후진 중 장애물이 이 거리 이상 멀어지면 후진 중단
+      reverse_speed_m_s:          -2.4   # 후진 속도 (m/s, 음수) | 절댓값이 클수록 빠르게 후진 | 너무 크면 제어 불안정
+      holding_duration_sec:        1.0   # HOLDING 유지 시간 (초) | 이 시간 동안 정지 후 REVERSING 전환
+                                         # 길수록 순간 노이즈에 의한 오감지 방지, 짧을수록 빠르게 후진 시도
+
+    lidar:
+      confirm_frames:    2      # 장애물 확정 연속 프레임 수 | N프레임 연속 감지 시에만 장애물로 인정
+                                # 높이면 노이즈에 강해지나 새 장애물 반응이 느려짐
+      ignore_radius_m:   0.30   # LiDAR 자기 반사 무시 반경 (m) | 이 거리 이내 포인트는 무시
+                                # 로봇 자체 구조물이 LiDAR에 찍히는 것을 방지
+                                # ※ 반드시 robot.safety_radius_m 보다 크거나 같아야 함
+
+    debug:
+      enabled: true     # RViz 시각화 데이터 발행 여부 | true = arc/LiDAR/상태 텍스트 발행
+                        # 실제 운용 시 false 로 설정하면 불필요한 통신 제거 가능
