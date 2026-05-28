@@ -1,6 +1,0 @@
-transformer_coordinate_node:
-  ros__parameters:
-    origin:
-      latitude:  36.364864    # 실제 운용 좌표 입력
-      longitude: 127.344258
-      altitude:  0
