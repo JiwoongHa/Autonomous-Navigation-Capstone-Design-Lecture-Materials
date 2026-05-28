@@ -76,6 +76,7 @@ class PathPlannerNode(Node):
         self.closest_obstacle_dist = 99.9
         self.front_obstacle_dist = 99.9
         self.recovery_state = RecoveryState.NORMAL
+        self._last_recovery_log_time_ns = {}
 
         self.create_subscription(Point, '/usv/state/position_ned', self.pos_cb, sensor_qos)
         self.create_subscription(Float32, '/usv/state/heading', self.yaw_cb, sensor_qos)
@@ -95,18 +96,21 @@ class PathPlannerNode(Node):
             namespace='',
             parameters=[
                 ('sys.node_period_sec', 0.05),
-                ('robot.max_speed_m_s', 2.3),
-                ('robot.max_yaw_rate_deg_s', 75.0),
-                ('robot.safety_radius_m', 0.2),
+                ('robot.max_speed_m_s', 2.5),
+                ('robot.max_yaw_rate_deg_s', 90.0),
+                ('robot.safety_radius_m', 0.6),
                 ('plan.sim_time_sec', 3.0),
                 ('plan.dt_sec', 0.2),
-                ('plan.arc_count', 20),
+                ('plan.arc_count', 15),
                 ('plan.goal_path_resolution_m', 0.2),
                 ('lidar.ignore_radius_m', 0.6),
                 ('lidar.front_angle_deg', 30.0),
-                ('recovery.front_obstacle_threshold_m', 0.6),
-                ('recovery.clear_distance_m', 0.6),
-                ('recovery.reverse_speed_m_s', -2.3),
+                ('lidar.min_cluster_points', 3),
+                ('lidar.max_cluster_gap_m', 0.45),
+                ('recovery.front_obstacle_threshold_m', 1.0),
+                ('recovery.clear_distance_m', 1.5),
+                ('recovery.reverse_speed_m_s', -0.8),
+                ('recovery.reverse_turn_rate_deg_s', 20.0),
                 ('weights.goal_align', 1.0),
                 ('debug.enabled', True),
             ],
@@ -128,6 +132,8 @@ class PathPlannerNode(Node):
 
         self.ignore_radius_m = float(self.get_parameter('lidar.ignore_radius_m').value)
         self.front_angle_rad = radians(float(self.get_parameter('lidar.front_angle_deg').value))
+        self.min_cluster_points = int(self.get_parameter('lidar.min_cluster_points').value)
+        self.max_cluster_gap_m = float(self.get_parameter('lidar.max_cluster_gap_m').value)
 
         self.recovery_config = RecoveryConfig(
             front_obstacle_threshold_m=float(
@@ -135,6 +141,9 @@ class PathPlannerNode(Node):
             ),
             clear_distance_m=float(self.get_parameter('recovery.clear_distance_m').value),
             reverse_speed_m_s=float(self.get_parameter('recovery.reverse_speed_m_s').value),
+            reverse_turn_rate_rad_s=radians(
+                float(self.get_parameter('recovery.reverse_turn_rate_deg_s').value)
+            ),
         )
 
         self.goal_align_weight = float(self.get_parameter('weights.goal_align').value)
@@ -164,6 +173,8 @@ class PathPlannerNode(Node):
             ignore_radius_m=self.ignore_radius_m,
             max_lookahead_m=max_lookahead_m,
             front_angle_rad=self.front_angle_rad,
+            min_cluster_points=self.min_cluster_points,
+            max_cluster_gap_m=self.max_cluster_gap_m,
         )
 
         self.closest_obstacle_dist = self.obstacles.closest_distance_m
@@ -200,7 +211,6 @@ class PathPlannerNode(Node):
             if self.recovery_state != RecoveryState.NORMAL:
                 self.get_logger().info(
                     'Goal-directed path is clear. Returning to NORMAL guidance.',
-                    throttle_duration_sec=1.0,
                 )
 
             self.recovery_state = RecoveryState.NORMAL
@@ -228,6 +238,7 @@ class PathPlannerNode(Node):
             front_obstacle_distance_m=self.front_obstacle_dist,
             current_state=self.recovery_state,
             config=self.recovery_config,
+            obstacle_points_enu=self.obstacles.points_enu,
         )
 
         self._log_recovery_decision(decision)
@@ -315,8 +326,11 @@ class PathPlannerNode(Node):
         self.cmd_pub.publish(twist)
 
     def _log_recovery_decision(self, decision):
-        """Keep logging in the ROS node while the decision logic stays testable."""
-        if not decision.log_message:
+        """Log recovery decisions while avoiding rclpy throttle filter conflicts."""
+        if not decision.log_message or not decision.log_level:
+            return
+
+        if not self._should_log_recovery_decision(decision):
             return
 
         if decision.log_level == 'warn':
@@ -325,6 +339,23 @@ class PathPlannerNode(Node):
             self.get_logger().info(decision.log_message)
         elif decision.log_level == 'debug':
             self.get_logger().debug(decision.log_message)
+
+    def _should_log_recovery_decision(self, decision):
+        """Return True when the log throttle period for this decision has elapsed."""
+        throttle_sec = max(float(decision.throttle_sec), 0.0)
+        if throttle_sec <= 0.0:
+            return True
+
+        now_ns = self.get_clock().now().nanoseconds
+        throttle_ns = int(throttle_sec * 1.0e9)
+        log_key = (str(decision.log_level), str(decision.next_state))
+
+        last_ns = self._last_recovery_log_time_ns.get(log_key)
+        if last_ns is not None and (now_ns - last_ns) < throttle_ns:
+            return False
+
+        self._last_recovery_log_time_ns[log_key] = now_ns
+        return True
 
     def _publish_debug(self, arc_evaluations, best_idx, recovery_state):
         """Publish RViz markers for candidate arcs, filtered LiDAR points, and recovery state."""

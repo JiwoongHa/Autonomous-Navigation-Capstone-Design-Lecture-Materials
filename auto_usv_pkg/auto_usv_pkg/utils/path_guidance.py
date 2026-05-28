@@ -143,7 +143,7 @@ def compute_approach_speed(
     distance_to_goal_m,
     max_speed_m_s,
     slow_down_distance_m=5.0,
-    min_speed_m_s=0.2,
+    min_speed_m_s=1.0,
 ):
     """Scale speed near the goal while keeping a minimum commanded forward speed."""
     if distance_to_goal_m < slow_down_distance_m:

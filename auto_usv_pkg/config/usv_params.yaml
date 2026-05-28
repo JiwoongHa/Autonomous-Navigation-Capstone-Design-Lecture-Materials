@@ -4,6 +4,8 @@ pos_trans:
     # =========================================================
     # NED 좌표계 원점 (LLA)
     # 모든 NED 좌표 변환의 기준점이 되는 위/경도/고도
+    # ECEF → NED 회전행렬 계산에 사용됨
+    # ⚠️ 실제 운용 장소로 반드시 변경 필요
     # =========================================================
     origin.latitude: 36.395991    # 원점 위도 [deg]
     origin.longitude: 127.401794  # 원점 경도 [deg]
@@ -16,59 +18,165 @@ path_planner_node:
     # =========================================================
     # System
     # =========================================================
-    sys.node_period_sec: 0.05       # 제어 루프 주기 [sec] → 20Hz
+    sys.node_period_sec: 0.05
+    # 제어 루프 실행 주기 [sec] → 현재 20Hz
+    # ↑ 크게 하면: CPU 부하 감소, 반응 느려짐
+    # ↓ 작게 하면: 반응 빠름, CPU 부하 증가
+    # ⚠️ LiDAR 주기(보통 10~20Hz)보다 빠르게 설정해도 의미 없음
 
     # =========================================================
     # Vehicle
     # =========================================================
-    robot.max_speed_m_s: 1.8        # USV 최대 전진 속도 [m/s]
-    robot.max_yaw_rate_deg_s: 90.0  # USV 최대 선회 각속도 [deg/s]
-    robot.safety_radius_m: 0.80     # 충돌 판정 안전 반경 [m] (arc 경로와 장애물 간 최소 거리)
+    robot.max_speed_m_s: 1.8
+    # USV 최대 전진 속도 [m/s]
+    # arc 시뮬레이션 시 모든 후보 경로에 이 속도 적용
+    # max_lookahead = max_speed * sim_time + 2.0 계산에도 사용
+    # ↑ 크게 하면: 더 빠른 이동, arc가 더 멀리까지 뻗어 장애물 판정 범위 증가
+    # ↓ 작게 하면: 느린 이동, 좁은 공간에서 회피 여유 증가
+
+    robot.max_yaw_rate_deg_s: 65.0
+    # USV 최대 선회 각속도 [deg/s]
+    # 후보 arc 범위: -90deg/s ~ +90deg/s 를 arc_count개로 균등 분할
+    # ↑ 크게 하면: 급격한 방향 전환 가능, 좁은 공간 회피 유리
+    # ↓ 작게 하면: 완만한 선회, 고속 안정성 향상
+
+    robot.safety_radius_m: 0.60
+    # arc 경로와 장애물 포인트 간 최소 허용 거리 [m]
+    # check_arc_collision()에서 distance < safety_radius 이면 충돌로 판정
+    # ↑ 크게 하면: 장애물과 더 넓은 간격 유지, 초록 arc 줄어듦 (회피 민감도 증가)
+    # ↓ 작게 하면: 장애물 근처까지 접근 허용, 좁은 공간 통과 가능하지만 위험
 
     # =========================================================
     # Arc Planner
     # =========================================================
-    plan.sim_time_sec: 3.0          # arc 시뮬레이션 예측 시간 [sec] (얼마나 앞을 볼지)
-    plan.dt_sec: 0.2                # arc 시뮬레이션 적분 시간 간격 [sec]
-    plan.arc_count: 20              # 후보 arc(yaw rate) 샘플링 개수 [개] (많을수록 정밀하나 연산 증가)
-    plan.goal_path_resolution_m: 0.2  # goal 직선 경로 샘플링 간격 [m] (충돌 체크 정밀도)
+    plan.sim_time_sec: 3.0
+    # arc 시뮬레이션 예측 시간 [sec]
+    # 예측 거리 = max_speed * sim_time (현재 1.8 * 3.0 = 5.4m)
+    # LiDAR 유효 범위 = max_speed * sim_time + 2.0 = 7.4m
+    # ↑ 크게 하면: 더 멀리 예측, 실내처럼 좁은 공간에서 모든 arc가 벽에 닿아 전부 빨간색 될 수 있음
+    # ↓ 작게 하면: 짧게 예측, 실내 테스트에 유리 (1.0~2.0 권장)
+
+    plan.dt_sec: 0.2
+    # arc 시뮬레이션 적분 시간 간격 [sec]
+    # 스텝 수 = sim_time / dt (현재 3.0 / 0.2 = 15 스텝)
+    # ↑ 크게 하면: 스텝 수 감소, 충돌 체크 정밀도 낮아짐
+    # ↓ 작게 하면: 스텝 수 증가, 정밀도 향상, 연산량 증가
+
+    plan.arc_count: 20
+    # 후보 arc(yaw rate) 샘플링 개수
+    # -max_yaw_rate ~ +max_yaw_rate 를 20개로 균등 분할
+    # ↑ 크게 하면: 더 세밀한 방향 선택, 연산량 증가
+    # ↓ 작게 하면: 연산 빠름, 최적 경로 놓칠 수 있음
+
+    plan.goal_path_resolution_m: 0.2
+    # goal 직선 경로 포인트 간격 [m]
+    # avoidance_required 판단 시 goal 직선 경로의 충돌 체크 밀도
+    # ↑ 크게 하면: 포인트 수 감소, 충돌 체크 구멍 생길 수 있음
+    # ↓ 작게 하면: 촘촘한 체크, 연산량 소폭 증가
 
     # =========================================================
     # LiDAR
     # =========================================================
-    lidar.ignore_radius_m: 0.25    # USV 본체로 인한 self-detection 무시 반경 [m]
-    lidar.front_angle_deg: 90.0   # 전방 장애물 감지 범위 [deg] (±30° → 정면 60° 이내)
+    lidar.ignore_radius_m: 0.25
+    # USV 본체 self-detection 무시 반경 [m]
+    # 이 반경 이내의 LiDAR 포인트는 장애물로 인식하지 않음
+    # ↑ 크게 하면: 더 넓은 범위 무시, 가까운 실제 장애물도 놓칠 수 있음
+    # ↓ 작게 하면: 본체 구조물이 장애물로 오인식될 수 있음
+
+    lidar.front_angle_deg: 50.0
+    # 전방 장애물 감지 범위 반각 [deg] → ±90° = 정면 180° 이내
+    # front_distance_m 계산에만 사용 (recovery 상태 전이 판단용)
+    # ⚠️ 충돌 체크(check_arc_collision)는 전방향 포인트 모두 사용 (이 값과 무관)
+    # ↑ 크게 하면: 측면 장애물도 전방으로 인식, HOLDING 진입 빨라짐
+    # ↓ 작게 하면: 정면 좁은 범위만 전방으로 인식, 측면 장애물에 둔감
+
+    lidar.min_cluster_points: 3
+    # 유효 장애물로 인정할 최소 연속 포인트 수
+    # keep_contiguous_scan_clusters()에서 3개 미만 연속 포인트는 노이즈로 제거
+    # ↑ 크게 하면: 작은 물체/노이즈 무시, 실제 큰 장애물만 인식
+    # ↓ 1로 설정 시: 클러스터 필터링 비활성화 (단일 포인트도 장애물로 인식)
+
+    lidar.max_cluster_gap_m: 0.45
+    # 같은 클러스터로 묶을 최대 포인트 간 거리 [m]
+    # 인접 포인트 간격이 이 값 이하이면 같은 물체로 판단
+    # ↑ 크게 하면: 멀리 떨어진 포인트도 같은 물체로 묶음, 큰 물체 인식 유리
+    # ↓ 작게 하면: 엄격하게 클러스터 분리, 물체가 끊겨 인식될 수 있음
 
     # =========================================================
-    # Recovery (장애물로 인한 회피 불가 시 복구 동작)
+    # Recovery
     # =========================================================
-    recovery.front_obstacle_threshold_m: 0.6  # 전방 장애물이 이 거리 이하이면 HOLDING 진입 [m]
-    recovery.clear_distance_m: 0.7           # 복구 완료 판정 기준 전방 여유 거리 [m]
-    recovery.reverse_speed_m_s: -2.3          # REVERSING 상태에서 후진 속도 [m/s] (음수=후진)
+    recovery.front_obstacle_threshold_m: 0.6
+    # HOLDING 진입 기준 전방 장애물 거리 [m]
+    # front_distance_m < 이 값 → NORMAL에서 HOLDING으로 전이
+    # ↑ 크게 하면: 멀리서부터 HOLDING 진입, 반응 빠름 (안전)
+    # ↓ 작게 하면: 장애물이 매우 가까워야 HOLDING 진입, 반응 느림 (위험)
+    # ⚠️ clear_distance_m 보다 반드시 작아야 히스테리시스 동작
+
+    recovery.clear_distance_m: 0.8
+    # 복구 완료(REVERSING → NORMAL) 판정 거리 [m]
+    # REVERSING 중 front_distance_m >= 이 값 → NORMAL 복귀
+    # ↑ 크게 하면: 더 많이 후진 후 복귀, 안전하지만 느림
+    # ↓ 작게 하면: 조금만 후진해도 복귀, front_obstacle_threshold_m보다 커야 함
+    # ⚠️ front_obstacle_threshold_m < clear_distance_m 조건 필수
+
+    recovery.reverse_speed_m_s: -1.3
+    # REVERSING 상태 후진 속도 [m/s] (음수 = 후진)
+    # ↑ 절댓값 크게 하면: 빠른 후진, 좁은 공간에서 위험
+    # ↓ 절댓값 작게 하면: 느린 후진, 안전하지만 탈출 시간 증가
+
+    recovery.reverse_turn_rate_deg_s: 40.0
+    # REVERSING 시 장애물 반대 방향으로 꺾는 각속도 [deg/s]
+    # compute_reverse_escape_yaw_rate_enu()에서 장애물 무게중심의 좌/우 편향을 계산해 방향 결정
+    # (장애물이 왼쪽에 많으면 → 오른쪽으로 후진 조향)
+    # 0.0으로 설정 시: 직진 후진만 수행 (조향 없음)
+    # ↑ 크게 하면: 더 크게 꺾어 탈출, 좁은 공간에서 벽에 닿을 위험
+    # ↓ 작게 하면: 완만하게 꺾음, 막힌 공간 탈출이 느릴 수 있음
 
     # =========================================================
-    # Cost Function (arc 선택 점수 가중치)
+    # Cost Function
     # =========================================================
-    weights.goal_align: 1.0   # goal 방향 정렬 점수 가중치 (클수록 goal 방향 arc 우선 선택)
+    weights.goal_align: 1.0
+    # goal 방향 정렬 점수 가중치
+    # score_goal_alignment()에서 arc 끝 방향과 goal 방향 차이로 점수 계산
+    # 현재 가중치가 1개뿐이므로 값 변경은 의미 없음
+    # 향후 다른 가중치(장애물 거리, 속도 등) 추가 시 상대적 중요도 조절에 사용
 
     # =========================================================
     # Debug
     # =========================================================
-    debug.enabled: true   # RViz 디버그 마커 퍼블리시 여부 (arc, 장애물, 복구상태 시각화)
+    debug.enabled: true
+    # RViz 디버그 마커 퍼블리시 여부
+    # true: /vfh/debug_markers 토픽으로 arc(초록/빨강/파랑), 장애물(노랑), 복구상태 텍스트 퍼블리시
+    # false: 마커 퍼블리시 안 함 → 연산량 소폭 감소 (실제 운용 시 false 권장)
 
 
 cmd_msg_pub_px4:
   ros__parameters:
 
-    # =========================================================
-    # Publish Timer
-    # =========================================================
-    timer_period: 0.02   # PX4 Offboard 메시지 발행 주기 [sec] → 50Hz
-                         # PX4는 2Hz 이상 수신 시 Offboard 모드 유지 (50Hz는 충분한 여유)
+    timer_period: 0.02
+    # PX4 Offboard 메시지 발행 주기 [sec] → 50Hz
+    # OffboardControlMode + TrajectorySetpoint를 이 주기로 발행
+    # ⚠️ PX4는 2Hz 이상 수신해야 Offboard 모드 유지 (50Hz는 충분한 여유)
+    # ↑ 크게 하면: 발행 주기 느려짐, 2Hz 미만 시 Offboard 모드 해제됨
+    # ↓ 작게 하면: 더 자주 발행, 불필요한 CPU 사용
+
 
 dummy_state_pub_node:
   ros__parameters:
+
     goal.north_m: -5.0
+    # 더미 goal의 북쪽(N) 방향 거리 [m]
+    # 음수 = 남쪽, 양수 = 북쪽
+    # heading.rad: 0.0 (정북)일 때 음수면 USV 기준 후방이 goal
+
     goal.east_m: 0.0
+    # 더미 goal의 동쪽(E) 방향 거리 [m]
+    # 음수 = 서쪽, 양수 = 동쪽
+
     heading.rad: 0.0
+    # USV 초기 헤딩 [rad, NED 기준]
+    # 0.0 = 정북, π/2(1.5708) = 정동, π(-π) = 정남, -π/2(-1.5708) = 정서
+
     timer_period: 0.1
+    # 더미 토픽 퍼블리시 주기 [sec] → 10Hz
+    # path_planner_node 제어 루프(20Hz)보다 느려도 동작에 문제 없음
