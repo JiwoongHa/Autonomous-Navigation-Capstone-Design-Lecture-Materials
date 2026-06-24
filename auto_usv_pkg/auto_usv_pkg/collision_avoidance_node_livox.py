@@ -321,12 +321,19 @@ def _marker(header, ns: str, mid: int, mtype: int) -> Marker:
     return m
 
 
-def build_arc_markers(trajs: np.ndarray, collision: np.ndarray, best_idx: int, header) -> MarkerArray:
+def build_arc_markers(trajs: np.ndarray, collision: np.ndarray, best_idx: int,
+                      header, emergency: bool = False) -> MarkerArray:
     ma = MarkerArray()
     for i in range(trajs.shape[0]):
         m = _marker(header, 'arcs', i, Marker.LINE_STRIP)
         if i == best_idx:
-            m.color.b, m.color.a, m.scale.x = 1.0, 1.0, 0.15
+            if emergency:
+                # 비상 경로(전 경로 차단): 진한 초록 + 굵게
+                m.color.r, m.color.g, m.color.b, m.color.a = 1.0, 1.0, 1.0, 1.0
+                m.scale.x = 0.15
+            else:
+                # 일반 선택 경로: 파랑 + 굵게
+                m.color.b, m.color.a, m.scale.x = 1.0, 1.0, 0.15
         elif collision[i]:
             m.color.r, m.color.a = 1.0, 0.6
         else:
@@ -369,6 +376,8 @@ def build_status_marker(
 ) -> MarkerArray:
     ma = MarkerArray()
     m = _marker(header, 'status', 200, Marker.TEXT_VIEW_FACING)
+    m.pose.position.x = 3.0
+    m.pose.position.y = 3.0
     m.pose.position.z = 2.0
     m.scale.z = 0.4
     m.color.r = m.color.g = m.color.b = m.color.a = 1.0
@@ -385,6 +394,10 @@ def build_status_marker(
 
 def publish_all(pub, *marker_arrays) -> None:
     combined = MarkerArray()
+    # 직전 프레임 마커를 모두 삭제하고 현재 상태만 새로 그림 (stale marker 방지)
+    clear = Marker()
+    clear.action = Marker.DELETEALL
+    combined.markers.append(clear)
     for ma in marker_arrays:
         combined.markers.extend(ma.markers)
     pub.publish(combined)
@@ -431,7 +444,7 @@ class CollisionAvoidanceNodeLivox(Node):
 
         self._pub_cmd   = self.create_publisher(Twist,       '/vfh/command',        10)
         self._pub_flag  = self.create_publisher(Bool,        '/vfh/oa_flag',        10)
-        self._pub_debug = self.create_publisher(MarkerArray, '/vfh/debug_markers', 10)
+        self._pub_debug = self.create_publisher(MarkerArray, '/vfh/debug_markers_', 10)
 
         self.create_timer(1.0 / self.RATE_HZ, self._loop)
         self.get_logger().info('CollisionAvoidanceNodeLivox Ready!! (input: /livox/lidar)')
@@ -604,16 +617,19 @@ class CollisionAvoidanceNodeLivox(Node):
             self._prev_idx = best_idx
             if best_idx != -1:
                 rate, mode = float(self._rates[best_idx]), f'Avoidance (Route {best_idx})'
+                marker_idx, emergency = best_idx, False
             else:
                 spd *= 0.3
-                low_dmins = clearance_per_arc(0.3 * trajs, obs)  # 저속 아크 기준 최다개방
-                rate = float(self._rates[int(np.argmax(low_dmins))])
+                low_dmins = clearance_per_arc(0.3 * trajs, obs)
+                marker_idx = int(np.argmax(low_dmins))
+                rate = float(self._rates[marker_idx])
                 mode = 'All Route Blocked — low speed'
+                emergency = True
             self._pub_cmd.publish(self._twist(spd, ned_yaw(self._heading, rate * self.SIM_T)))
             self._pub_flag.publish(self._bool(True))
             if dbg:
                 publish_all(self._pub_debug,
-                            build_arc_markers(trajs, collision, best_idx, hdr),
+                            build_arc_markers(trajs, collision, marker_idx, hdr, emergency),
                             build_obstacle_markers(obs, hdr),
                             build_status_marker(mode, spd, dist, closest, True, hdr))
 
