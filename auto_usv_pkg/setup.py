@@ -25,7 +25,8 @@ setup(
     entry_points={
         'console_scripts': [
             'pos_trans = auto_usv_pkg.coordinate_transformer_node:main',
-            'path_planner_node = auto_usv_pkg.path_planner_node:main',
+            'collision_avoidance_node = auto_usv_pkg.collision_avoidance_node:main',
+            'collision_avoidance_node_livox = auto_usv_pkg.collision_avoidance_node_livox:main',
             'px4_cmd_pub = auto_usv_pkg.px4_mission_msg_pub_node:main',
             'dummy_state_pub = auto_usv_pkg.dummy_state_pub_node:main',
         ],

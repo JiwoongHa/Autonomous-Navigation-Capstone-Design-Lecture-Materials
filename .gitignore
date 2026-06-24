@@ -1,2 +1,4 @@
 ugv_mission_pkg/
 usv_control_pkg/
+__pycache__/
+*.pyc
